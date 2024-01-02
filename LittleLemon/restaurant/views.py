@@ -10,10 +10,8 @@ from rest_framework.response import Response
 from .serializers import UserSerializer, MenuSerializer, BookingSerializer, MenuItemSerializer
 from .models import Menu, Booking, MenuItem
 
-# Create your views here.
-def sayHello(request):
-    return HttpResponse('Hello World')
 
+# Create your views here.
 def index(request):
     return render(request, 'index.html', {})
 
@@ -44,12 +42,6 @@ class MenuItemsView(generics.ListCreateAPIView):
         return Response({'message': "list of MenuItem"}, status.HTTP_200_OK)
     def post(self, request):
         return Response({'message': "new MenuItem"}, status.HTTP_200_OK)
-
-# @api_view()
-# @permission_classes([IsAuthenticated])
-# def securedview(request):
-#     print("This is securedview")
-#     return Response({'message': 'needs authentication'})
 
 @api_view()
 @permission_classes([IsAuthenticated])
